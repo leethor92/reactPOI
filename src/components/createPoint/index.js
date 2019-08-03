@@ -1,13 +1,6 @@
 import React, { Component } from 'react';
 import './createPoint.css';
 
-const regions = [
-    { label: "North", value: 1 },
-    { label: "South", value: 2 },
-    { label: "East", value: 3 },
-    { label: "West", value: 4 },
-];
-
 export default class Form extends Component {
     render() {
         return (

@@ -1,0 +1,53 @@
+import React, { Component } from "react";
+import "./point.css";
+import "../../fontawesome";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+class Point extends Component {
+    render() {
+        return (
+            <div className="col-sm-3">
+                <div className="card">
+                    <div className="card-body">
+                        <h5 className="card-title ">
+                            {`${this.props.point.name}`}
+                        </h5>
+                        <p key="location">
+                            <span> {this.props.point.details}</span>
+                        </p>
+                        <p key="location">
+                            <span> {this.props.point.location}</span>
+                        </p>
+                        <p key="longitude">
+                            <span> {this.props.point.longitude} </span>
+                        </p>
+                        <p key="longitude">
+                            <span> {this.props.point.latitude} </span>
+                        </p>
+                        <span className="ptr" >
+                    <FontAwesomeIcon icon={["fas", "heart"]} size="2x" />
+                            {` ${this.props.point.upvotes}`}
+                        </span>
+                    </div>
+                    <div className="card-footer">
+                        <div
+                            className="btn-group d-flex btn-group-justified"
+                            role="group"
+                            aria-label="..."
+                        >
+                            <button type="button" className={"btn btn-default w-100"}>
+                                <FontAwesomeIcon icon={["fas", "edit"]} />
+                                {" Edit "}
+                            </button>
+                            <button type="button" className={"btn btn-danger w-100"}>
+                                <FontAwesomeIcon icon={["fas", "trash-alt"]} />
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+}
+
+export default Point;
