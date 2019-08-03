@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import Header from "./components/header/";
+import PointList from "./components/pointList/";
+import FilterControls from "./components/filterControls/";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    const sample = {
+      id: 1 ,
+      name: 'Aran Island',
+      details: 'The Aran Islands are 3 rocky isles guarding the mouth of Galway Bay, in western Ireland',
+      location: 'West',
+      longitude: '53.1289',
+      latitude: '9.7197',
+      upvotes: 10
+    }
+
+    const points = [sample, sample, sample, sample, sample];
+
+    return (
+        <div className="jumbotron">
+          <Header numPoints={points.length} />
+          <FilterControls />
+          <PointList points={points} />
+        </div>
+    );
+  }
 }
 
 export default App;

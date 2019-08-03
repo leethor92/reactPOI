@@ -4,7 +4,9 @@ import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import Header from '../src/components/header/'
 import FilterControls from '../src/components/filterControls/';
 import CreatePoint from '../src/components/createPoint/';
-import Point from '../src/components/point/'
+import Point from '../src/components/point/';
+import PointList from '../src/components/pointList/';
+import "../node_modules/bootstrap/dist/css/bootstrap.css";
 
 const sample = {
     id: 1 ,
@@ -21,7 +23,7 @@ storiesOf("Point List App/Point", module).add("default", () => (
 ));
 
 storiesOf("Point List App/Header", module).add("default", () => (
-    <Header numPoints={10} />
+    <Header numPoints= {10} />
 ));
 
 storiesOf("Point List App/Filter Controls", module).add("default", () => (
@@ -29,3 +31,8 @@ storiesOf("Point List App/Filter Controls", module).add("default", () => (
 ));
 
 storiesOf("Point List App/Create Point", module).add("default", () => <CreatePoint />);
+
+storiesOf("Point List App/Point List", module).add("default", () => {
+    const samples = [sample, sample, sample, sample, sample]
+    return <PointList points={samples}/>
+});
