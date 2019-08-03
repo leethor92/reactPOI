@@ -1,7 +1,9 @@
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faTrashAlt, faEdit, faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
-    faEnvelope,
-    faPhone
+    faHeart,
+    faTrashAlt,
+    faEdit,
+    faCaretDown
 );
