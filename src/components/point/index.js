@@ -8,6 +8,11 @@ class Point extends Component {
         return (
             <div className="col-sm-3">
                 <div className="card">
+                    <img
+                        className="card-img-tag center "
+                        alt={this.props.point.name}
+                        src={this.props.point.image.thumbnail}
+                    />
                     <div className="card-body">
                         <h5 className="card-title ">
                             {`${this.props.point.name}`}
@@ -16,7 +21,7 @@ class Point extends Component {
                             <span> {this.props.point.details}</span>
                         </p>
                         <p key="location">
-                            <span> {this.props.point.location}</span>
+                            <span> {this.props.point.category}</span>
                         </p>
                         <p key="longitude">
                             <span> {this.props.point.longitude} </span>
