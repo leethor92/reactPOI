@@ -4,6 +4,22 @@ import "../../fontawesome";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class Point extends Component {
+    handleVote = () =>  this.props.upvoteHandler(this.props.point.id);
+    state = {
+        status: "",
+        name: this.props.point.name,
+        details: this.props.point.details,
+        category: this.props.point.category,
+        longitude: this.props.point.longitude,
+        latitude: this.props.point.latitude,
+        previousDetails: {
+            name: this.props.point.name,
+            details: this.props.point.details,
+            longitude: this.props.point.longitude,
+            latitude: this.props.point.latitude,
+            category: this.props.point.category,
+        }
+    };
     render() {
         return (
             <div className="col-sm-3">
@@ -29,7 +45,7 @@ class Point extends Component {
                         <p key="longitude">
                             <span> {this.props.point.latitude} </span>
                         </p>
-                        <span className="ptr" >
+                        <span className="ptr" onClick={this.handleVote}>
                     <FontAwesomeIcon icon={["fas", "heart"]} size="2x" />
                             {` ${this.props.point.upvotes}`}
                         </span>

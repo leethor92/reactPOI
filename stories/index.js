@@ -10,7 +10,7 @@ import "../node_modules/bootstrap/dist/css/bootstrap.css";
 
 const sample = {
     id: 1 ,
-    picture: {thumbnail: './inishmore.jpg'},
+    picture: {thumbnail: './inishmore.png'},
     name: 'Aran Island',
     details: 'The Aran Islands are 3 rocky isles guarding the mouth of Galway Bay, in western Ireland',
     category: 'West',

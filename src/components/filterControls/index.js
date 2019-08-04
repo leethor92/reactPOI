@@ -11,7 +11,7 @@ export default class FilterControls extends Component {
                             <span>Filter </span>
                             <input type="text" placeholder="Point Search" />
                             <span> Location: </span>
-                            <select id="region">
+                            <select id="category">
                                 <option value="all">All</option>
                                 <option value="north">North</option>
                                 <option value="east">East</option>

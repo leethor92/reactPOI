@@ -5,7 +5,7 @@ class StubAPI {
         this.points = [
             {
                 id: 1,
-                image: { thumbnail: '../public/inishmore.jpg' },
+                image: { thumbnail: '../public/inishmore.png' },
                 name: "Tory Island",
                 details: "Tory Island, or simply Tory, is an island 14.5 kilometres off the north-west coast of County Donegal in Ulster, Ireland, and is the most remote inhabited island of Ireland.",
                 category: "North",
@@ -15,7 +15,7 @@ class StubAPI {
             },
             {
                 id: 2,
-                image: { thumbnail: '../public/inishmore.jpg' },
+                image: { thumbnail: '../public/inishmore.png' },
                 name: "Inishmaan",
                 details: "Inishmaan is the middle of the three main Aran Islands in Galway Bay on the west coast of Ireland. It is part of County Galway in the province of Connacht. Inishmaan has a population of about 160, making it the smallest of the Aran Islands in terms of population",
                 category: "West",
@@ -25,7 +25,7 @@ class StubAPI {
             },
             {
                 id: 3,
-                image: { thumbnail: '../public/inishmore.jpg' },
+                image: { thumbnail: '../public/inishmore.png' },
                 name: "Inisheer",
                 details: "Inisheer, the island's official name, Inis Oirthir, meaning \"east island\", and traditionally Inis Thiar, meaning \"rear island\". It is the smallest and most eastern of the three Aran Islands in Galway Bay",
                 category: "North",
@@ -35,7 +35,7 @@ class StubAPI {
             },
             {
                 id: 4,
-                image: { thumbnail: '../public/inishmore.jpg' },
+                image: { thumbnail: '../public/inishmore.png' },
                 name: "Great Island",
                 details: "Great Island is an island in Cork Harbour, at the mouth of the River Lee in Ireland",
                 category: "South",
@@ -46,7 +46,7 @@ class StubAPI {
             },
             {
                 id: 5,
-                image: { thumbnail: '../public/inishmore.jpg' },
+                image: { thumbnail: '../public/inishmore.png' },
                 name: "Achill Island",
                 details: "Achill Island lies off County Mayo on the west coast of the Republic of Ireland",
                 category: "West",
@@ -56,7 +56,7 @@ class StubAPI {
             },
             {
                 id: 6,
-                image: { thumbnail: '../public/inishmore.jpg' },
+                image: { thumbnail: '../public/inishmore.png' },
                 name: "Gorumna",
                 details: "Gorumna is an island on the west coast of Ireland, forming part of County Galway",
                 category: "West",
