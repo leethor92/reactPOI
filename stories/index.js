@@ -7,6 +7,7 @@ import CreatePoint from '../src/components/createPoint/';
 import Point from '../src/components/point/';
 import PointList from '../src/components/pointList/';
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
+import { action } from "@storybook/addon-actions";
 
 const sample = {
     id: 1 ,
@@ -26,6 +27,10 @@ storiesOf("Point List App/Point", module).add("default", () => (
 storiesOf("Point List App/Header", module).add("default", () => (
     <Header numPoints= {10} />
 ));
+
+storiesOf("Point List App/Point", module)
+    .add("default", () => <Point point={point} upvoteHandler={action("upvoted")} /> )
+    .add("No point", () => <Point point={{ ...point, name: "" }} upvoteHandler={action("upvoted")}/>);
 
 storiesOf("Point List App/Filter Controls", module).add("default", () => (
     <FilterControls />

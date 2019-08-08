@@ -1,6 +1,6 @@
 const buttons = {
     normal: {
-        leftButtonVal: "Edit",
+        leftButtonVal: "edit",
         rightButtonVal: "Delete",
         leftButtonColor: "btn-default",
         rightButtonColor: "btn-danger"

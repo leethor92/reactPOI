@@ -12,6 +12,10 @@ class App extends Component {
         api.upvote(id) ;
         this.setState({});
     };
+    deletePoint = (id) => {
+        api.delete(id);
+        this.setState({});
+    };
     render() {
         let points = _.sortBy(api.getAll(), point => -point.upvotes);
         return (
@@ -19,7 +23,8 @@ class App extends Component {
                 <Header numPoints={points.length} />
                 <FilterControls />
                 <PointList points={points}
-                           upvoteHandler={this.incrementUpvote}/>
+                           upvoteHandler={this.incrementUpvote}
+                           deleteHandler={this.deletePoint}/>
             </div>
         );
     }

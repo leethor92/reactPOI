@@ -85,7 +85,6 @@ class StubAPI {
             category,
             longitude,
             latitude,
-            reviews: [],
             upvotes: 0
         });
         return newLen > len;
@@ -104,6 +103,33 @@ class StubAPI {
         let index = _.findIndex(this.points, point => point.id === id);
         let result = index !== -1 ? this.points[index] : null;
         return result;
+    }
+
+    find(id) {
+        let index = _.findIndex(
+            this.points,
+            point => `${point.id}` === id
+        );
+        if (index !== -1) {
+            return this.points[index];
+        }
+        return null;
+    }
+
+    update( id, details, latitude, longitude) {
+        let index = _.findIndex(this.points, point => point.id === id);
+        if (index !== -1) {
+            this.points[index].details = details;
+            this.points[index].latitude = latitude;
+            this.points[index].longitude = longitude;
+            return true;
+        }
+        return false;
+    }
+
+    delete(id) {
+        let elements = _.remove(this.points, point => point.id === id);
+        return elements;
     }
 
 }
