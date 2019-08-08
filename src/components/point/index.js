@@ -43,15 +43,18 @@ class Point extends Component {
     render() {
         let activeButtons = buttons.normal;
         let leftButtonHandler = this.handleEdit;
+        let rightButtonHandler = this.handleDelete;
         let cardColor = "bg-white";
         if (this.state.status === "edit") {
             cardColor = "bg-primary";
             activeButtons = buttons.edit;
             leftButtonHandler = this.handleSave;
+            rightButtonHandler = this.handleCancel;
         } else if (this.state.status === 'del' ) {
             cardColor = "bg-warning";
             activeButtons = buttons.delete;
             leftButtonHandler = this.handleCancel;
+            rightButtonHandler = this.handleDelete;
         }
         return (
             <div className="col-sm-3">
@@ -65,7 +68,7 @@ class Point extends Component {
                         <h5 className="card-title ">
                             {`${this.props.point.name}`}
                         </h5>
-                        {this.state.status === "edit" ? (
+                        {this.state.status === "edit"?(
                             <Fragment>
                                 <p>
                                 <input
@@ -128,7 +131,7 @@ class Point extends Component {
                             </button>
 
                             <button type="button" className={"btn w-100 " + activeButtons.rightButtonColor}
-                                    onClick={this.handleDelete}>
+                                    onClick={rightButtonHandler}>
                                 <FontAwesomeIcon icon={["fas", "trash-alt"]} />
                                 {activeButtons.rightButtonVal}
                             </button>
