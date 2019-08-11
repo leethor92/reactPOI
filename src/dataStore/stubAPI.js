@@ -48,18 +48,15 @@ class StubAPI {
     }
 
     find(id) {
-        let index = _.findIndex(
-            this.points,
-            point => `${point.id}` === id
-        );
+        let index = _.findIndex(this.points, point => point.id === id);
         if (index !== -1) {
             return this.points[index];
         }
         return null;
     }
 
-    update(id, details, lat, long) {
-        let index = _.findIndex(this.points, point => point.id === id);
+    update(key, details, lat, long) {
+        let index = _.findIndex(this.points, point => point.id === key);
         if (index !== -1) {
             this.points[index].details = details;
             this.points[index].lat = lat;

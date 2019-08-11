@@ -19,29 +19,30 @@ class Point extends Component {
         }
     };
     handleEdit = () => this.setState({ status: "edit" });
+    handleCancel = () => {
+        let { details, long, lat } = this.state.previousDetails;
+        this.setState({ status: "", details, long, lat});
+    };
     handleSave = e => {
         e.preventDefault();
         let updatedDetails = this.state.details.trim();
-        let updatedLong = this.state.long.trim();
-        let updatedLat = this.state.lat.trim();
+        let updatedLong = this.state.long;
+        let updatedLat = this.state.lat;
         if (!updatedDetails || !updatedLong || !updatedLat) {
             return;
         }
         let { details, long, lat} = this.state;
         this.setState({ status: "", previousDetails: { details, long, lat} });
-        api.update(this.state.previousDetails.long, updatedDetails, updatedLong, updatedLat);
+        api.update(this.state.previousDetails.id, updatedDetails, updatedLong, updatedLat);
     };
-    handleCancel = () => {
-        let { details, long, lat } = this.state.previousDetails;
-        this.setState({ status: "", details, long, lat});
-    };
+
     handleDetailsChange = e => this.setState({ details: e.target.value });
     handleLongChange = e => this.setState({ long: e.target.value });
     handleLatChange = e => this.setState({ lat: e.target.value });
     handleDelete = () =>  this.setState({ status : 'del'} );
     handleConfirm = (e) => {
         e.preventDefault();
-        this.props.deleteHandler(this.state.id);
+        this.props.deleteHandler(this.props.point.id);
     };
 
     render() {
