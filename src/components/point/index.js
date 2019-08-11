@@ -10,35 +10,39 @@ class Point extends Component {
     state = {
         status: "",
         details: this.props.point.details,
-        longitude: this.props.point.longitude,
-        latitude: this.props.point.latitude,
+        long: this.props.point.long,
+        lat: this.props.point.lat,
         previousDetails: {
             details: this.props.point.details,
-            longitude: this.props.point.longitude,
-            latitude: this.props.point.latitude,
+            long: this.props.point.long,
+            lat: this.props.point.lat,
         }
     };
     handleEdit = () => this.setState({ status: "edit" });
     handleSave = e => {
         e.preventDefault();
         let updatedDetails = this.state.details.trim();
-        let updatedLongitude = this.state.longitude.trim();
-        let updatedLatitude = this.state.latitude.trim();
-        if (!updatedDetails || !updatedLongitude || !updatedLatitude) {
+        let updatedLong = this.state.long.trim();
+        let updatedLat = this.state.lat.trim();
+        if (!updatedDetails || !updatedLong || !updatedLat) {
             return;
         }
-        let { details, longitude, latitude} = this.state;
-        this.setState({ status: "", previousDetails: { details, longitude, latitude} });
-        api.update(this.state.previousDetails.id, updatedDetails, updatedLongitude, updatedLatitude);
+        let { details, long, lat} = this.state;
+        this.setState({ status: "", previousDetails: { details, long, lat} });
+        api.update(this.state.previousDetails.long, updatedDetails, updatedLong, updatedLat);
     };
     handleCancel = () => {
-        let { details, longitude, latitude } = this.state.previousDetails;
-        this.setState({ status: "", details, longitude, latitude });
+        let { details, long, lat } = this.state.previousDetails;
+        this.setState({ status: "", details, long, lat});
     };
     handleDetailsChange = e => this.setState({ details: e.target.value });
-    handleLongitudeChange = e => this.setState({ longitude: e.target.value });
-    handleLatitudeChange = e => this.setState({ latitude: e.target.value });
-    handleDelete = () =>  this.props.deleteHandler(this.props.point.id);
+    handleLongChange = e => this.setState({ long: e.target.value });
+    handleLatChange = e => this.setState({ lat: e.target.value });
+    handleDelete = () =>  this.setState({ status : 'del'} );
+    handleConfirm = (e) => {
+        e.preventDefault();
+        this.props.deleteHandler(this.state.id);
+    };
 
     render() {
         let activeButtons = buttons.normal;
@@ -54,16 +58,12 @@ class Point extends Component {
             cardColor = "bg-warning";
             activeButtons = buttons.delete;
             leftButtonHandler = this.handleCancel;
-            rightButtonHandler = this.handleDelete;
+            rightButtonHandler = this.handleConfirm;
         }
         return (
             <div className="col-sm-3">
                 <div className={`card  ${cardColor}`}>
-                    <img
-                        className="card-img-tag center "
-                        alt={this.props.point.name}
-                        src={this.props.point.image.thumbnail}
-                    />
+
                     <div className="card-body">
                         <h5 className="card-title ">
                             {`${this.props.point.name}`}
@@ -82,16 +82,16 @@ class Point extends Component {
                                     <input
                                         type="text"
                                         className="form-control"
-                                        value={this.state.longitude}
-                                        onChange={this.handleLongitudeChange}
+                                        value={this.state.long}
+                                        onChange={this.handleLongChange}
                                     />
                                 </p>
                                 <p>
                                     <input
                                         type="text"
                                         className="form-control"
-                                        value={this.state.latitude}
-                                        onChange={this.handleLatitudeChange}
+                                        value={this.state.lat}
+                                        onChange={this.handleLatChange}
                                     />
                                 </p>
                             </Fragment>
@@ -101,10 +101,10 @@ class Point extends Component {
                                     <span> {this.props.point.details}</span>
                                 </p>
                                 <p>
-                                    <span> {this.props.point.longitude} </span>
+                                    <span> {this.props.point.long} </span>
                                 </p>
                                 <p>
-                                    <span> {this.props.point.latitude} </span>
+                                    <span> {this.props.point.lat} </span>
                                 </p>
                                 <p>
                                     <span> {this.props.point.category} </span>
@@ -126,7 +126,6 @@ class Point extends Component {
                             <button type="button" className={"btn w-100 " + activeButtons.leftButtonColor}
                                     onClick={leftButtonHandler}>
                                 <FontAwesomeIcon icon={["fas", "edit"]} />
-
                                 {activeButtons.leftButtonVal}
                             </button>
 
