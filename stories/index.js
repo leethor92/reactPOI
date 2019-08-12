@@ -9,6 +9,7 @@ import PointList from '../src/components/pointList/';
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import { action } from "@storybook/addon-actions";
 
+
 const sample = {
     id: 1 ,
     picture: {thumbnail: './inishmore.png'},
@@ -42,3 +43,7 @@ storiesOf("Point List App/Point List", module).add("default", () => {
     const samples = [sample, sample, sample, sample, sample]
     return <PointList points={samples}/>
 });
+
+storiesOf("Point List App/Point", module).add("default", () => (
+    <Point point={sample} deleteHandler={action('Delete confirmed') }/>
+));

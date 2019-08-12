@@ -2,6 +2,20 @@ import React, { Component } from 'react';
 import './createPoint.css';
 
 export default class Form extends Component {
+    state = { name: '', details: '', category: '', lat: '', long:''};
+
+    handleNameChange = (e) =>  this.setState({name: e.target.value});
+    handleDetailsChange = (e) =>  this.setState({details: e.target.value});
+    handleCategoryChange = (e) => this.setState({category: e.target.value});
+    handleLatChange = (e) => this.setState({lat: e.target.value});
+    handleLongChange = (e) => this.setState({long: e.target.value});
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+        this.props.handleAdd( this.state.name, this.state.details, this.state.lat, this.state.long, this.state.category)
+        this.setState({ name: '', details:'', lat: '', long: '', category:''})
+    }
+
     render() {
         return (
             <form  className="form bg-dark text-light">
@@ -9,33 +23,42 @@ export default class Form extends Component {
                 <div className="form-group">
                     <input type="text"
                            className="form-control"
-                           placeholder="Name"></input>
+                           placeholder="Name"
+                           value={this.state.name}
+                           onChange={this.handleNameChange}/>
                 </div>
                 <div className="form-group">
                     <input type="text"
                            className="form-control"
-                           placeholder="Details"></input>
+                           placeholder="Details"
+                           value={this.state.details}
+                           onChange={this.handleDetailsChange}/>
                 </div>
 
                 <div className="form-group">
                     <input type="text"
                            className="form-control"
-                           placeholder="0.00000"></input>
+                           placeholder="0.00000"
+                           value={this.state.lat}
+                           onChange={this.handleLatChange}/>
                 </div>
                 <div className="form-group">
                     <input type="text"
                            className="form-control"
-                           placeholder="0.00000"></input>
+                           placeholder="0.00000"
+                           value={this.state.long}
+                           onChange={this.handleLongChange}/>
                 </div>
                 <div className="form-group">
-                    <select>
-                        <option value="north">North</option>
-                        <option value="south">South</option>
-                        <option selected value="west">West</option>
-                        <option value="east">East</option>
+                    <select value={this.state.category} onChange={this.handleCategoryChange}>
+                        <option value="North">North</option>
+                        <option value="South">South</option>
+                        <option selected value="West">West</option>
+                        <option value="East">East</option>
                     </select>
                 </div>
-                <button type="submit" className="btn btn-primary">Add</button>
+                <button type="submit" className="btn btn-primary"
+                        onClick={this.handleSubmit}>Add</button>
             </form>
         );
     }

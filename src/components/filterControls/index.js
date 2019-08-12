@@ -2,6 +2,16 @@ import React, { Component } from "react";
 import "./filterControls.css"
 
 export default class FilterControls extends Component {
+    handleChange = (e, type, value) => {
+        e.preventDefault();
+        this.props.onUserInput(type, value);
+    };
+    handleTextChange = e => {
+        this.handleChange(e, "name", e.target.value);
+    };
+    handleCategoryChange = e => {
+        this.handleChange(e, "category", e.target.value);
+    };
     render() {
         return (
             <div className="container-fluid">
@@ -9,14 +19,19 @@ export default class FilterControls extends Component {
                     <div className="col-md-12">
                         <h4>
                             <span>Filter </span>
-                            <input type="text" placeholder="Point Search" />
+                            <input type="text"
+                                   placeholder="Point Search"
+                                   onChange={this.handleTextChange}
+                            />
                             <span> Location: </span>
-                            <select id="category">
+                            <select id="category" type="text"
+                                    onChange={this.handleCategoryChange}
+                            >
                                 <option value="all">All</option>
-                                <option value="north">North</option>
-                                <option value="east">East</option>
-                                <option value="west">West</option>
-                                <option value="south">South</option>
+                                <option value="North">North</option>
+                                <option value="East">East</option>
+                                <option value="West">West</option>
+                                <option value="South">South</option>
                             </select>
                         </h4>
                     </div>

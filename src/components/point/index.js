@@ -36,6 +36,7 @@ class Point extends Component {
         api.update(this.state.previousDetails.id, updatedDetails, updatedLong, updatedLat);
     };
 
+
     handleDetailsChange = e => this.setState({ details: e.target.value });
     handleLongChange = e => this.setState({ long: e.target.value });
     handleLatChange = e => this.setState({ lat: e.target.value });

@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import Header from "./components/header/";
 import PointList from "./components/pointList/";
-import FilterControls from "./components/filterControls/";
+import FilterControls from "./components/filterControls";
+import Form from './components/createPoint/';
 import api from "./dataStore/stubAPI";
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import _ from 'lodash';
@@ -20,6 +21,10 @@ class App extends Component {
         });
     }
     state = { search: "", category: "all" };
+    addPoint = (name, details, long, lat, category) => {
+        api.add(name, details, long, lat, category);
+        this.setState({});
+    };
     incrementUpvote = (id) => {
         api.upvote(id) ;
         this.setState({});
@@ -28,13 +33,30 @@ class App extends Component {
         api.delete(key);
         this.setState({});
     };
+    handleChange = (type, value) => {
+        type === "name"
+            ? this.setState({ search: value })
+            : this.setState({ category: value });
+    };
     render() {
         let points = _.sortBy(api.getAll(), point => -point.upvotes);
+        let filteredPoints = points.filter(p => {
+            const name = `${p.name}`;
+            return name.toLowerCase().search(this.state.search.toLowerCase()) !== -1;
+        });
+        filteredPoints =
+            this.state.category === "all"
+                ? filteredPoints
+                : filteredPoints.filter(p => p.category === this.state.category);
+        let sortedPoints = _.sortBy(filteredPoints, p => p.name.last);
         return (
             <div className="jumbotron">
                 <Header numPoints={points.length} />
-                <FilterControls />
-                <PointList points={points}
+                <FilterControls
+                    onUserInput={this.handleChange}
+                />
+                <Form handleAdd={this.addPoint} />
+                <PointList points={sortedPoints}
                            upvoteHandler={this.incrementUpvote}
                            deleteHandler={this.deletePoint}/>
             </div>
