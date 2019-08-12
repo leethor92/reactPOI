@@ -10,7 +10,21 @@ class StubAPI {
                 category: "North",
                 long: "55.2655",
                 lat: "8.2304",
-                upvotes: 10
+                upvotes: 10,
+                reviews : [
+                    {
+                        id: 1,
+                        author: 'Joe Bloggs',
+                        review: 'I agree with .....',
+                        upvotes: 5
+                    },
+                    {
+                        id: 2,
+                        author: 'Jane Smith',
+                        review: 'On the other hand .....',
+                        upvotes: 2
+                    }
+                ],
             },
             {
                 id: 2,
@@ -19,6 +33,7 @@ class StubAPI {
                 category: "West",
                 long: "53.0855",
                 lat: "9.5860",
+                reviews: [],
                 upvotes: 14
             },
             {
@@ -28,6 +43,7 @@ class StubAPI {
                 category: "North",
                 long: "55.2655",
                 lat: "9.5318",
+                reviews: [],
                 upvotes: 12
             },
             {
@@ -47,6 +63,7 @@ class StubAPI {
                 category: "West",
                 long: "53.9620",
                 lat: "10.0153",
+                reviews: [],
                 upvotes: 8
             },
             {
@@ -56,6 +73,7 @@ class StubAPI {
                 category: "West",
                 long: "53.2622",
                 lat: "9.6778",
+                reviews: [],
                 upvotes: 10
             },
         ];
@@ -79,6 +97,7 @@ class StubAPI {
             long,
             lat,
             category,
+            reviews:[],
             upvotes: 0
         });
         return newLen > len;
@@ -125,6 +144,24 @@ class StubAPI {
     delete(id) {
         let elements = _.remove(this.points, point => point.id === id);
         return elements;
+    }
+
+    addReview(pointId, r, a) {
+        let point = this.getPoint(pointId);
+        let id = 1;
+        let last = _.last(point.reviews);
+        if (last) {
+            id = last.id + 1;
+        }
+        point.reviews.push({ id: id, review: r, author: a, upvotes: 0 });
+    }
+
+    upvoteReview(pointId, reviewId) {
+        let point = this.getPoint(pointId);
+        let index = _.findIndex(point.reviews, r => r.id === reviewId);
+        if (index !== -1) {
+            point.reviews[index].upvotes += 1;
+        }
     }
 
 }

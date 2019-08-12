@@ -8,12 +8,13 @@ import Point from '../src/components/point/';
 import PointList from '../src/components/pointList/';
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import { action } from "@storybook/addon-actions";
+import { MemoryRouter, Route } from "react-router";
+import ReviewForm from "../src/components/reviewForm";
+import Review from "../src/components/review";
+import ReviewList from "../src/components/reviewList";
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 7fb5a2ec1940880aa6bb7456b817840499efe373
-const sample = {
+const point = {
     id: 1 ,
     picture: {thumbnail: './inishmore.png'},
     name: 'Aran Island',
@@ -24,9 +25,38 @@ const sample = {
     upvotes: 10
 }
 
+
+
 storiesOf("Point List App/Point", module).add("default", () => (
-    <Point point={sample}/>
+    <Point point={point}/>
 ));
+
+storiesOf("Point List App/Review page/Review Form", module).add("default", () => (
+    <ReviewForm point={point} addReviewHandler={action("review added")} />
+));
+
+storiesOf("Point List App/Review page/Review", module).add("default", () => (
+    <Review upvoteHandler={action("upvoted")} review={review} />
+));
+
+const review = {
+    id: 1,
+    author: "Joe Bloggs",
+    review: "I agree with .....",
+    upvotes: 10
+};
+
+storiesOf("Point List App/Review page/Review List", module).add("default", () => {
+    const defaultReviews = [
+        review,
+        { ...review, author: "Jane Smith", upvotes: 3, id: 2 },
+        { ...review, review: "On the other hand", id: 3 },
+        { ...review, author: "Jill Dwyer", upvotes: 5, id: 4 }
+    ];
+    return (
+        <ReviewList upvoteHandler={action("upvoted")} reviews={defaultReviews} />
+    );
+});
 
 storiesOf("Point List App/Header", module).add("default", () => (
     <Header numPoints= {10} />
@@ -43,13 +73,11 @@ storiesOf("Point List App/Filter Controls", module).add("default", () => (
 storiesOf("Point List App/Create Point", module).add("default", () => <CreatePoint />);
 
 storiesOf("Point List App/Point List", module).add("default", () => {
-    const samples = [sample, sample, sample, sample, sample]
+    const samples = [point, point, point, point, point]
     return <PointList points={samples}/>
 });
-<<<<<<< HEAD
 
 storiesOf("Point List App/Point", module).add("default", () => (
-    <Point point={sample} deleteHandler={action('Delete confirmed') }/>
+    <Point point={point} deleteHandler={action('Delete confirmed') }/>
 ));
-=======
->>>>>>> 7fb5a2ec1940880aa6bb7456b817840499efe373
+

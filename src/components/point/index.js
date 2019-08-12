@@ -3,7 +3,8 @@ import "./point.css";
 import "../../fontawesome";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import buttons from "../../config/buttonsConfig";
-import api from '../../dataStore/stubAPI'
+import api from '../../dataStore/stubAPI';
+import { Link } from 'react-router-dom';
 
 class Point extends Component {
     handleVote = () =>  this.props.upvoteHandler(this.props.point.id);
@@ -47,6 +48,7 @@ class Point extends Component {
     };
 
     render() {
+
         let activeButtons = buttons.normal;
         let leftButtonHandler = this.handleEdit;
         let rightButtonHandler = this.handleDelete;
@@ -69,6 +71,9 @@ class Point extends Component {
                     <div className="card-body">
                         <h5 className="card-title ">
                             {`${this.props.point.name}`}
+                            <span>
+                            <Link to={`/points/${this.props.point.id}` }>Reviews</Link>
+                            </span>
                         </h5>
                         {this.state.status === "edit"?(
                             <Fragment>
