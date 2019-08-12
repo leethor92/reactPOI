@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './createPoint.css';
 
 export default class Form extends Component {
+
     state = { name: '', details: '', category: '', lat: '', long:''};
 
     handleNameChange = (e) =>  this.setState({name: e.target.value});
@@ -34,7 +35,6 @@ export default class Form extends Component {
                            value={this.state.details}
                            onChange={this.handleDetailsChange}/>
                 </div>
-
                 <div className="form-group">
                     <input type="text"
                            className="form-control"
