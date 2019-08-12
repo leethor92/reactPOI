@@ -3,13 +3,13 @@ import './createPoint.css';
 
 export default class Form extends Component {
 
-    state = { name: '', details: '', category: '', lat: '', long:''};
+    state = { name: '', details: '',  lat: '', long:'', category: ''};
 
     handleNameChange = (e) =>  this.setState({name: e.target.value});
     handleDetailsChange = (e) =>  this.setState({details: e.target.value});
-    handleCategoryChange = (e) => this.setState({category: e.target.value});
     handleLatChange = (e) => this.setState({lat: e.target.value});
     handleLongChange = (e) => this.setState({long: e.target.value});
+    handleCategoryChange = (e) => this.setState({category: e.target.value});
 
     handleSubmit = (e) => {
         e.preventDefault();
@@ -38,14 +38,14 @@ export default class Form extends Component {
                 <div className="form-group">
                     <input type="text"
                            className="form-control"
-                           placeholder="0.00000"
+                           placeholder="latitude"
                            value={this.state.lat}
                            onChange={this.handleLatChange}/>
                 </div>
                 <div className="form-group">
                     <input type="text"
                            className="form-control"
-                           placeholder="0.00000"
+                           placeholder="longitude"
                            value={this.state.long}
                            onChange={this.handleLongChange}/>
                 </div>

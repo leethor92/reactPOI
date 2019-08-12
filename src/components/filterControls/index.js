@@ -31,6 +31,7 @@ export default class FilterControls extends Component {
                                 <option value="North">North</option>
                                 <option value="East">East</option>
                                 <option value="West">West</option>
+                                <option value="South">South</option>
                             </select>
                         </h4>
                     </div>
