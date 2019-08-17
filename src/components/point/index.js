@@ -72,9 +72,10 @@ class Point extends Component {
                         <h5 className="card-title ">
                             {`${this.props.point.name}`}
                             <span>
-                            <Link to={`/points/${this.props.point.id}` }>Reviews</Link>
+
                             </span>
                         </h5>
+                        <Link to={`/points/${this.props.point.id}` }>Reviews</Link>
                         {this.state.status === "edit"?(
                             <Fragment>
                                 <p>

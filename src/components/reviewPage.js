@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React, { Fragment , Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import _ from 'lodash'
 import api from '../dataStore/stubAPI';
 import ReviewList from './reviewList'
 import Form from './reviewForm'
+import "./reviewPage.css";
 
 class ReviewPage extends Component {
 
@@ -27,10 +28,12 @@ class ReviewPage extends Component {
         let line = point.link?
             <a>{point.name} </a> :
             <span>{point.name} </span> ;
+
         let reviews = _.sortBy(point.reviews,
             (review) => - review.upvotes
         );
         return (
+            <Fragment>
             <div className="container">
                 <div className="row">
                     <div className="col-md-9 col-md-offset-1">
@@ -41,6 +44,10 @@ class ReviewPage extends Component {
                     </div>
                 </div>
             </div>
+                <div className="col-5 bg-secondary text-light">
+                    <span>Map placeholder</span>
+                </div>
+            </Fragment>
         )
     }
 }
