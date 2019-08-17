@@ -76,4 +76,31 @@ describe("Main View ", () => {
                 });
         });
     });
+
+    describe("Filtering", () => {
+        it("filteres the points by name", () => {
+            cy.get("span")
+                .contains("Filter")
+                .next()
+                .type("la");
+            cy.get(".card").each($el => {
+                cy.wrap($el)
+                    .find(".card-title")
+                    .contains("la");
+            });
+        });
+
+        it("filters the points by region", () => {
+            cy.get('select').then(function($select){
+                $select.val('East')
+            })
+            cy.get('select').should('have.value', 'East')
+            cy.get(".card")
+                .its("length")
+                .then(regions => {
+                    cy.get(".card")
+                        .its("length")
+                });
+        });
+    });
 });
