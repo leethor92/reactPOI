@@ -10,7 +10,7 @@ import request from "superagent";
 
 class App extends Component {
     componentDidMount() {
-        request.get('http://localhost:3002').end((error, res) => {
+        request.get('http://localhost:3002/points').end((error, res) => {
             if (res) {
                 let points = JSON.parse(res.text);
                 api.initialize(points);

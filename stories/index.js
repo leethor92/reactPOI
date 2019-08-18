@@ -12,6 +12,8 @@ import { MemoryRouter, Route } from "react-router";
 import ReviewForm from "../src/components/reviewForm";
 import Review from "../src/components/review";
 import ReviewList from "../src/components/reviewList";
+import LoginForm from "../src/components/authentication/loginForm";
+
 
 
 const point = {
@@ -31,13 +33,25 @@ storiesOf("Point List App/Point", module).add("default", () => (
     <Point point={point}/>
 ));
 
-storiesOf("Point List App/Review page/Review Form", module).add("default", () => (
+storiesOf("Point List App/Review page/Review Form", module)
+    .addDecorator(story => (
+        <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+    ))
+    .add("default", () => (
     <ReviewForm point={point} addReviewHandler={action("review added")} />
 ));
 
-storiesOf("Point List App/Review page/Review", module).add("default", () => (
+storiesOf("Point List App/Review page/Review", module).addDecorator(story => (
+    <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+)).add("default", () => (
     <Review upvoteHandler={action("upvoted")} review={review} />
 ));
+
+storiesOf("Point List App/Header", module)
+    .addDecorator(story => (
+        <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+    ))
+    .add("default", () => <Header />);
 
 const review = {
     id: 1,
@@ -58,26 +72,46 @@ storiesOf("Point List App/Review page/Review List", module).add("default", () =>
     );
 });
 
-storiesOf("Point List App/Header", module).add("default", () => (
+storiesOf("Point List App/Header", module)
+    .addDecorator(story => (
+        <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+    )).add("default", () => (
     <Header numPoints= {10} />
 ));
 
 storiesOf("Point List App/Point", module)
+    .addDecorator(story => (
+        <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+    ))
     .add("default", () => <Point point={point} upvoteHandler={action("upvoted")} /> )
     .add("No point", () => <Point point={{ ...point, name: "" }} upvoteHandler={action("upvoted")}/>);
 
-storiesOf("Point List App/Filter Controls", module).add("default", () => (
+storiesOf("Point List App/Filter Controls", module)
+    .add("default", () => (
     <FilterControls />
 ));
 
 storiesOf("Point List App/Create Point", module).add("default", () => <CreatePoint />);
 
-storiesOf("Point List App/Point List", module).add("default", () => {
+storiesOf("Point List App/Point List", module).addDecorator(story => (
+    <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+)).add("default", () => {
     const samples = [point, point, point, point, point]
     return <PointList points={samples}/>
 });
 
-storiesOf("Point List App/Point", module).add("default", () => (
+storiesOf("Point List App/Point", module)
+    .addDecorator(story => (
+        <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+    )).add("default", () => (
     <Point point={point} deleteHandler={action('Delete confirmed') }/>
 ));
+
+storiesOf("Point List App/Login Form", module)
+    .addDecorator(story => (
+        <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+    ))
+    .add("default", () => (
+        <LoginForm />
+    ));
 
