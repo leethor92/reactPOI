@@ -12,6 +12,48 @@ describe("Main View ", () => {
         cy.get(".card").should("have.length", 6);
     });
 
+    describe("Upvoting", () => {
+        it("increments the upvote count", () => {
+            // Upvote the top/first news item twice, from 20 to 22
+            cy.get("span.ptr")
+                .first()
+                .contains("14");
+            cy.get("[data-icon=heart]")
+                .first()
+                .click();
+            cy.get("span.ptr")
+                .first()
+                .contains("15");
+            cy.get("[data-icon=heart]")
+                .first()
+                .click();
+            cy.get("span.ptr")
+                .first()
+                .contains("16");
+        });
+
+        it("recomputes the order of the points", () => {
+            // Upvote the third (index 2) news item until it moves
+            // to 2nd position
+            cy.get("@targetcard")
+                .eq(2)
+                .contains("Tory Island");
+            cy.get("span.ptr")
+                .eq(2)
+                .click();
+            cy.get("span.ptr")
+                .eq(2)
+                .click();
+            cy.get("span.ptr")
+                .eq(2)
+                .click();
+            cy.get("span.point")
+                .eq(1)
+                .contains("Tory Island");
+        });
+    });
+
+
     describe("Delete operation", () => {
         it("allows a point be deleted", () => {
             cy.get(".badge").should("contain", 6);
@@ -104,3 +146,4 @@ describe("Main View ", () => {
         });
     });
 });
+
