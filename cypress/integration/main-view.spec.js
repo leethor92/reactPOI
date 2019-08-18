@@ -35,7 +35,7 @@ describe("Main View ", () => {
         it("recomputes the order of the points", () => {
             // Upvote the third (index 2) news item until it moves
             // to 2nd position
-            cy.get("@targetcard")
+            cy.get(".card")
                 .eq(2)
                 .contains("Tory Island");
             cy.get("span.ptr")
@@ -47,7 +47,7 @@ describe("Main View ", () => {
             cy.get("span.ptr")
                 .eq(2)
                 .click();
-            cy.get("span.point")
+            cy.get(".card")
                 .eq(1)
                 .contains("Tory Island");
         });
@@ -143,6 +143,29 @@ describe("Main View ", () => {
                     cy.get(".card")
                         .its("length")
                 });
+        });
+    });
+
+    describe("Add a new point", () => {
+        beforeEach(() => {
+            cy.get("input[placeholder=Name]").type("Sample name");
+            cy.get("input[placeholder=Details]").type("Sample details");
+            cy.get("input[placeholder=latitude]").type("Sample Lat");
+            cy.get("input[placeholder=longitude]").type("Sample Long");
+            cy.get('[id="category"]').contains('West');
+        });
+        it("adds a new item with a link", () => {
+            cy.get("button[type=submit]").click();
+            cy.get(".card")
+                .last()
+                .contains("Sample name");
+        });
+        it("adds a new item without a link", () => {
+            cy.get("button[type=submit]").click();
+            cy.get(".card")
+                .last()
+                .contains("Sample name")
+                .should("not.have.attr", "href");
         });
     });
 });
