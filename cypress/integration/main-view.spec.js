@@ -47,8 +47,17 @@ describe("Main View ", () => {
             cy.get("span.ptr")
                 .eq(2)
                 .click();
+            cy.get("span.ptr")
+                .eq(2)
+                .click();
+            cy.get("span.ptr")
+                .eq(2)
+                .click();
+            cy.get("span.ptr")
+                .eq(2)
+                .click();
             cy.get(".card")
-                .eq(1)
+                .eq(0)
                 .contains("Tory Island");
         });
     });
