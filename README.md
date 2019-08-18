@@ -1,68 +1,240 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# ICT Skills 2 Assignment - Single Page app.
 
-## Available Scripts
+Name: Lee Thornton
 
-In the project directory, you can run:
+## Overview.
 
-### `npm start`
+For this assignment I chose to create a react app of points of interest based on Irish Islands.
+The user will be able to view the home page of all irish islands currently listed, they will also 
+be able to add their own point of interest. 
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Users are able to filter islands by name or by the region they are situated in e.g. North
+CRUD functionality is enable with users being able to edit & delete islands. In addition
+users are able to like an island by clicking the heart icon & the top rated islands are 
+listed to the top hence they will be seen first.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+Users are able to click through to view reviews of each island but this requires a login.
+A logged in user will be able to create their own review & also vote on other users reviews.
+Like the islands the top rated review will be filtered to the top. A user will also be
+able to see the location of an island on google Maps.
 
-### `npm test`
+. . . . . List of user features  . . . .
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- app deployed at : https://thawing-stream-18881.herokuapp.com/
+- list all islands
+- Add an Island shown
+- Number of islands 
+- filter points by name or by region
+- Google map location of point
+- Like a point
+- user login
+- review view protected by login
+- Delete points
+- Edit points
+- Add reviews
+- like comments
+- JSON Server--backend integration
+- e2e testing
 
-### `npm run build`
+## Setup.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+. . . . Having cloned the repo,
+**Step 1**
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+Run the auth server
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Navigate to poi-app folder cd poi-app
+- Proceed to the mock-auth-backend folder:
+  - cd mockJwt
+  - cd mock-auth-backend
+- Install Dependencies npm install
+- run the server node index.js
+- Your server should be now running on port 8005
+- leave the terminal window open to keep the auth server running
 
-### `npm run eject`
+**Step 2**
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Run the JSON Server (backend)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Open a new terminal window & navigate to poi-app folder cd poi-app
+- run the Json server json-server 
+  - json-server ./points.json -p 3002
+- Leave the terminal window open to keep the json server running
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+**Step 3**
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Run the React application
 
-## Learn More
+- Open a new terminal window & navigate to poi-app folder cd poi-app
+- install dependencies npm install
+- To enable google maps functionality, navigate to src folder & create env.json file
+{
+  "REACT_GOOGLE_MAP": "<Your-API-KEY>"
+}
+- to run the application from the poi-app folder use command npm start
+  - The app is now running at localhost:3000
+  
+**Step 4 (Optional)**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Run story book
+  
+- Open a new terminal window within the folder react_poi
+- Run npx start-storybook -p 9001 -c .storybook/
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Step 5 (Optional)**
 
-### Code Splitting
+Run Cypress tester
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+- Open a new terminal window within the folder react_poi
+- npx cypress open
+- This is a testing tool used for testing new & existing features
 
-### Analyzing the Bundle Size
+## Data Model Design.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+Preloaded data which is ran by the JSON server, from the points.json file
+Important thing to note if adding additional data, lat & long need to be added in number
+format for the Google Map functionality to work.
 
-### Making a Progressive Web App
+"points": [
+    {
+      "id": 1,
+      "name": "Tory Island",
+      "details": "Tory Island, or simply Tory, is an island 14.5 kilometres off the north-west coast of County Donegal in Ulster, Ireland, and is the most remote inhabited island of Ireland.",
+      "category": "North",
+      "lat": 55.2655,
+      "long": -8.2304,
+      "upvotes": 10,
+      "reviews": [
+        {
+          "id": 1,
+          "author": "Joe Bloggs",
+          "review": "I agree with .....",
+          "upvotes": 5
+        },
+        {
+          "id": 2,
+          "author": "Jane Smith",
+          "review": "On the other hand .....",
+          "upvotes": 2
+        }
+      ]
+    },
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+## UI Design.
 
-### Advanced Configuration
+. . . . . Screenshots of app's views with brief statements of their use
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+![][header]
 
-### Deployment
+>> The header is used for navigation to the home view of the app. Clicking on Point app
+ returns the users to the home page.
+ Also contains a login button for users to login. Number of points currently listed. 
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+![][filter]
 
-### `npm run build` fails to minify
+>> The filtering function for points is placed just above the list of points. Tbe user is 
+able to type in text to search for a point's name or select a region based on the dropdown menu.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+![][adding]
+
+>> The adding form allows a user to create a point that will then be displayed in the pointlist.
+Placeholders indicating Name, Details, Lat & long are provided to indicate to the user 
+the details needed to create a point. There is also a dropdown menu of pre-determined regions 
+that the user must select from.
+
+![][pointlist]
+
+>>The point listing piece show's all points pre-loaded in from the json server. Each point
+is contained in their own card with Edit & Delete buttons & a heart icon(this indicates likes)
+Each card contains a link to all the reviews which are also pre-loaded from the json server.
+
+![][delete]
+
+>>Once the delete button is selected by the user. The point card changes to yellow, the user is
+then given the option to either cancel the delete or confirm & remove the point.
+
+![][edit]
+
+>>If the user selects the edit option the card background changes colour to blue. The user
+is then given the option to save their changes or cancel & revert back to the original data.
+
+![][login]
+
+>>if the user clicks on the login button or into reviews assuming they haven't already 
+logged in, they will then be redirected to the login view. They need to enter email details
+& a password that's been pre-loaded in the auth server.
+
+[
+    {
+        "identifier": "a@b.com",
+        "password": "test",
+        "roles": ["admin"]
+    },
+    {
+        "identifier": "c@d.com",
+        "password": "test",
+        "roles": []
+    }
+]
+
+![][signout]
+
+>> Once the user has logged in, the user email that's logged in is indicated in the header,
+also the user can click the signout button to log out. Clicking point app will return
+the user to the homepage.
+
+![][reviewlist]
+
+>> Once the user has logged in they will be taken to a view where reviews are listed,
+they can also give a review a thumbs up if they agree with the view. Reviews are sorted
+by number of likes.
+
+![][addReview]
+
+>>The user is able to create their own review which can then be voted upon by other users.
+The placeholders indicate a user is to make a review & also to detail their name.
+
+![][map]
+
+>>The Google map piece use's the co-ordinates (long, lat) pre-loaded by the Json server to
+display the location of islands on the map.
+
+## Routing.
+
+- /points (public)- displays all points, adding point functionality, header component & filtering controls for points.
+- /points/:id (private) - displays all reviews, adding review functionality, google map location
+- /login (public) - displays the login component, only a registered username and password will grant access
+
+## Storybook.
+
+. . . . . Include a screenshot of the fully expanded list of stories from the tool's UI (see below). Group the stories appropriately (e.g. Contact page group) . . . .
+
+![][stories]
+
+. . . . State any Storybook add-ons used and include a screenshot(s) to illustrate.
+
+## Backend.
+
+. . . . . Briefly explain the backend/API used by the app (Stub, JSON-server, Custom Node, Open). For custom Node or Open API, list the endpoints it provides to your app and state the purpose of each
+
+## Authentication (if relevant).
+
+. . . . Briefly state the server-side authentication service used by your React app (Mock-auth, Custom Node/JWT, 3rd party(e.g. Firebase) ). Mention test username/passwords used . . . .
+
+## Independent learning.
+
+. . . . . State the non-standard aspects of React or other related technologies that you researched and applied in this assignment . . . . .
+
+[header]: ./images/Header.PNG
+[filter]: ./images/Filter.PNG
+[adding]: ./images/Add.PNG
+[pointlist]: ./images/Pointlist.PNG
+[delete]: ./images/Deletepoint.PNG
+[edit]: ./images/Edit.PNG
+[login]: ./images/Login.PNG
+[reviewlist]: ./images/Reviewlist.PNG
+[addReview]: ./images/Addreview.PNG
+[map]: ./images/Map.PNG
+[signout]: ./images/Reviewheader.PNG
+
+
