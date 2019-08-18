@@ -177,5 +177,37 @@ describe("Main View ", () => {
                 .should("not.have.attr", "href");
         });
     });
+    describe.only("Navigate to Comment page", () => {
+        it("requires a login before showing protected page", () => {
+            cy.get(".card")
+                .eq(1)
+                .contains("Reviews")
+                .click();
+            cy.url().should("include", "/login");
+            cy.get("input[name=username]")
+                .clear()
+                .type("a@b.com");
+            cy.get("input[name=password]")
+                .clear()
+                .type("test");
+            cy.get("button[type=submit]").click();
+        });
+        it("shows protected page when user already logged-in", () => {
+            cy.get("button")
+                .contains("Login")
+                .click({force: true});
+            cy.get("input[name=username]")
+                .clear()
+                .type("a@b.com");
+            cy.get("input[name=password]")
+                .clear()
+                .type("test");
+            cy.get("button[type=submit]").click();
+            cy.get(".card")
+                .eq(1)
+                .contains("Reviews")
+                .click();
+        });
+    });
 });
 

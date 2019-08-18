@@ -6,6 +6,7 @@ import App from "./App";
 import ReviewPage from "./components/reviewPage";
 import Header from "./components/header/";
 import LoginForm from "./components/authentication/loginForm";
+import PrivateRoute from "./components/authentication/privateRoute";
 
 const Router = (props) => {
     return (
@@ -14,7 +15,7 @@ const Router = (props) => {
                 <Header />
                 <div className="container-fluid">
                 <Switch>
-                    <Route path="/points/:point_id" component={ReviewPage} />
+                    <PrivateRoute path="/points/:point_id" component={ReviewPage} />
                     <Route path="/login" component={LoginForm} />  {/* New route */}
                     <Route exact path="/" component={App} />
                     <Redirect from="*" to="/" />
