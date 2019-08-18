@@ -53,10 +53,10 @@ class App extends Component {
         return (
             <div className="jumbotron">
                 <Header numPoints={sortedPoints.length} />
+                <Form handleAdd={this.addPoint} />
                 <FilterControls
                     onUserInput={this.handleChange}
                 />
-                <Form handleAdd={this.addPoint} />
                 <PointList points={sortedPoints}
                            upvoteHandler={this.incrementUpvote}
                            deleteHandler={this.deletePoint}/>

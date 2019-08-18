@@ -12,12 +12,14 @@ const Router = (props) => {
         <BrowserRouter>
             <div className="jumbotron">
                 <Header />
+                <div className="container-fluid">
                 <Switch>
                     <Route path="/points/:point_id" component={ReviewPage} />
                     <Route path="/login" component={LoginForm} />  {/* New route */}
                     <Route exact path="/" component={App} />
                     <Redirect from="*" to="/" />
                 </Switch>
+                </div>
             </div>
         </BrowserRouter>
     );
