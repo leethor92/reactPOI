@@ -36,14 +36,14 @@ export default class Form extends Component {
                            onChange={this.handleDetailsChange}/>
                 </div>
                 <div className="form-group">
-                    <input type="text"
+                    <input type="number"
                            className="form-control"
                            placeholder="latitude"
                            value={this.state.lat}
                            onChange={this.handleLatChange}/>
                 </div>
                 <div className="form-group">
-                    <input type="text"
+                    <input type="number"
                            className="form-control"
                            placeholder="longitude"
                            value={this.state.long}

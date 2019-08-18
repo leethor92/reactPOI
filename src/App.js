@@ -20,7 +20,6 @@ class App extends Component {
             }
         });
     }
-
     state = { search: "", category: "all" };
     addPoint = (name, details, long, lat, category) => {
         api.add(name, details, long, lat, category);

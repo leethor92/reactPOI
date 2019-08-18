@@ -5,6 +5,8 @@ import api from '../dataStore/stubAPI';
 import ReviewList from './reviewList'
 import Form from './reviewForm'
 import "./reviewPage.css";
+import Map from "./map";
+import env from '../env.json';
 
 class ReviewPage extends Component {
 
@@ -32,6 +34,7 @@ class ReviewPage extends Component {
         let reviews = _.sortBy(point.reviews,
             (review) => - review.upvotes
         );
+        const location = { lng: point.long, lat: point.lat };
         return (
             <Fragment>
             <div className="container">
@@ -44,8 +47,15 @@ class ReviewPage extends Component {
                     </div>
                 </div>
             </div>
-                <div className="col-5 bg-secondary text-light">
-                    <span>Map placeholder</span>
+                <div className="container" >
+                    <Map
+                        isMarkerShown
+                        googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${env.REACT_GOOGLE_MAP}&v=3.exp&libraries=geometry,drawing,places`}
+                        loadingElement={<div style={{ height: `100%` }} />}
+                        location={location}
+                        containerElement={<div style={{ height: `400px` }} />}
+                        mapElement={<div style={{ height: `100%` }} />}
+                    />
                 </div>
             </Fragment>
         )

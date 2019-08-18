@@ -5,8 +5,8 @@
       "name": "Tory Island",
       "details": "Tory Island, or simply Tory, is an island 14.5 kilometres off the north-west coast of County Donegal in Ulster, Ireland, and is the most remote inhabited island of Ireland.",
       "category": "North",
-      "long": "55.2655",
-      "lat": "8.2304",
+      "lat": 55.2655,
+      "long": -8.2304,
       "upvotes": 10,
       "reviews": [
         {
@@ -28,8 +28,8 @@
       "name": "Inishmaan",
       "details": "Inishmaan is the middle of the three main Aran Islands in Galway Bay on the west coast of Ireland. It is part of County Galway in the province of Connacht. Inishmaan has a population of about 160, making it the smallest of the Aran Islands in terms of population",
       "category": "West",
-      "long": "53.0855",
-      "lat": "9.5860",
+      "lat": 53.0855,
+      "long": -9.5860,
       "upvotes": 14,
       "reviews": [
         {
@@ -51,8 +51,8 @@
       "name": "Inisheer",
       "details": "Inisheer, the island's official name, Inis Oirthir, meaning \"east island\", and traditionally Inis Thiar, meaning \"rear island\". It is the smallest and most eastern of the three Aran Islands in Galway Bay",
       "category": "North",
-      "long": "55.2655",
-      "lat": "9.5318",
+      "lat": 55.2655,
+      "long": -9.5318,
       "upvotes": 12,
       "reviews": [
         {
@@ -74,8 +74,8 @@
       "name": "Great Island",
       "details": "Great Island is an island in Cork Harbour, at the mouth of the River Lee in Ireland",
       "category": "South",
-      "long": "52.2922",
-      "lat": "7.0034",
+      "lat": 52.2922,
+      "long": -7.0034,
       "upvotes": 2,
       "reviews": [
         {
@@ -97,8 +97,8 @@
       "name": "Achill Island",
       "details": "Achill Island lies off County Mayo on the west coast of the Republic of Ireland",
       "category": "West",
-      "long": "53.9620",
-      "lat": "10.0153",
+      "lat": 53.9620,
+      "long": -10.0153,
       "upvotes": 8,
       "reviews": [
         {
@@ -120,8 +120,8 @@
       "name": "Gorumna",
       "details": "Gorumna is an island on the west coast of Ireland, forming part of County Galway",
       "category": "West",
-      "long": "53.2622",
-      "lat": "9.6778",
+      "lat": 53.2622,
+      "long": -9.6778,
       "upvotes": 10,
       "reviews": [
         {
