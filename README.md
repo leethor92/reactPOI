@@ -95,7 +95,8 @@ Preloaded data which is ran by the JSON server, from the points.json file
 Important thing to note if adding additional data, lat & long need to be added in number
 format for the Google Map functionality to work.
 
-"points": [
+```javascript
+"points"; [
     {
       "id": 1,
       "name": "Tory Island",
@@ -119,6 +120,8 @@ format for the Google Map functionality to work.
         }
       ]
     },
+  ]
+```
 
 ## UI Design.
 
@@ -164,6 +167,7 @@ is then given the option to save their changes or cancel & revert back to the or
 logged in, they will then be redirected to the login view. They need to enter email details
 & a password that's been pre-loaded in the auth server.
 
+```javascript
 [
     {
         "identifier": "a@b.com",
@@ -176,6 +180,7 @@ logged in, they will then be redirected to the login view. They need to enter em
         "roles": []
     }
 ]
+```
 
 ![][signout]
 
@@ -226,8 +231,9 @@ Please see an example below of an island generated using the Json server.
 It is also worth noting that the deployed version of this app is set up to load data from the Json server,
 as search it will need to be running in order to generate preloaded data.
 
+```javascript
 {
-  "points": [
+  "points"; [
     {
       "id": 1,
       "name": "Tory Island",
@@ -250,7 +256,11 @@ as search it will need to be running in order to generate preloaded data.
           "upvotes": 2
         }
       ]
-    }, 
+    }
+  ]
+}
+```
+
 ## Authentication (if relevant).
 
 For authentication I chose to implement a Mock auth server, as outlined in the setup steps above.
@@ -258,6 +268,7 @@ There are two sample accounts generated but more can be added by customizing the
 I utilized authentication to protect the reviews view for only logged in users, also only allowing logged in users to create reviews.
 Below are the sample accounts generated:
 
+```javascript
 [
     {
         "identifier": "a@b.com",
@@ -270,6 +281,7 @@ Below are the sample accounts generated:
         "roles": []
     }
 ]
+```
 ## Independent learning.
 
 Most of the independent learning was spent around Cypress testing, for example how to click buttons
