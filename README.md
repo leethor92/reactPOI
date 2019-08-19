@@ -207,23 +207,75 @@ display the location of islands on the map.
 
 ## Storybook.
 
-. . . . . Include a screenshot of the fully expanded list of stories from the tool's UI (see below). Group the stories appropriately (e.g. Contact page group) . . . .
+![][storybook]
 
-![][stories]
-
-. . . . State any Storybook add-ons used and include a screenshot(s) to illustrate.
+- Below is a full list of all the stories used in storybook to test views & functionality.
+- I pretty much used storybook in parallel with the application for testing. Checking it was working correctly in Storybook before it worked
+in the app server itself.
 
 ## Backend.
 
-. . . . . Briefly explain the backend/API used by the app (Stub, JSON-server, Custom Node, Open). For custom Node or Open API, list the endpoints it provides to your app and state the purpose of each
+For the backend integration I chose to use a JSON server as the API. Initially I had chosen to integrate the backend with my
+poi-API from a previous assignment. But I found there was limited data available due to the new features created
+in the react app. I also created a custom random generator API but I also found this didn't generate the desired data
+& didn't give the app an authenticate feel. The JSON server in my view was the best option as it allowed me to easily customize
+any preloaded data in line with feature creation.
 
+Please see an example below of an island generated using the Json server.
+
+It is also worth noting that the deployed version of this app is set up to load data from the Json server,
+as search it will need to be running in order to generate preloaded data.
+
+{
+  "points": [
+    {
+      "id": 1,
+      "name": "Tory Island",
+      "details": "Tory Island, or simply Tory, is an island 14.5 kilometres off the north-west coast of County Donegal in Ulster, Ireland, and is the most remote inhabited island of Ireland.",
+      "category": "North",
+      "lat": 55.2655,
+      "long": -8.2304,
+      "upvotes": 10,
+      "reviews": [
+        {
+          "id": 1,
+          "author": "Joe Bloggs",
+          "review": "I agree with .....",
+          "upvotes": 5
+        },
+        {
+          "id": 2,
+          "author": "Jane Smith",
+          "review": "On the other hand .....",
+          "upvotes": 2
+        }
+      ]
+    }, 
 ## Authentication (if relevant).
 
-. . . . Briefly state the server-side authentication service used by your React app (Mock-auth, Custom Node/JWT, 3rd party(e.g. Firebase) ). Mention test username/passwords used . . . .
+For authentication I chose to implement a Mock auth server, as outlined in the setup steps above.
+There are two sample accounts generated but more can be added by customizing the accounts.json file.
+I utilized authentication to protect the reviews view for only logged in users, also only allowing logged in users to create reviews.
+Below are the sample accounts generated:
 
+[
+    {
+        "identifier": "a@b.com",
+        "password": "test",
+        "roles": ["admin"]
+    },
+    {
+        "identifier": "c@d.com",
+        "password": "test",
+        "roles": []
+    }
+]
 ## Independent learning.
 
-. . . . . State the non-standard aspects of React or other related technologies that you researched and applied in this assignment . . . . .
+Most of the independent learning was spent around Cypress testing, for example how to click buttons
+hidden within wrapped headers. For example the login button. I explored some bootstrap react to implement
+accordion functions for the create reviews & points options but unfortunately I never got around to implementing these elements
+in the final UI design.
 
 [header]: ./images/Header.PNG
 [filter]: ./images/Filter.PNG
@@ -236,5 +288,6 @@ display the location of islands on the map.
 [addReview]: ./images/Addreview.PNG
 [map]: ./images/Map.PNG
 [signout]: ./images/Reviewheader.PNG
+[storybook]: ./images/Storybook.PNG
 
 

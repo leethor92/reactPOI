@@ -8,11 +8,12 @@ import Point from '../src/components/point/';
 import PointList from '../src/components/pointList/';
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import { action } from "@storybook/addon-actions";
-import { MemoryRouter, Route } from "react-router";
+import { MemoryRouter } from "react-router";
 import ReviewForm from "../src/components/reviewForm";
 import Review from "../src/components/review";
 import ReviewList from "../src/components/reviewList";
 import LoginForm from "../src/components/authentication/loginForm";
+
 
 
 
@@ -29,7 +30,9 @@ const point = {
 
 
 
-storiesOf("Point List App/Point", module).add("default", () => (
+storiesOf("Point List App/Point", module).addDecorator(story => (
+    <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+)).add("default", () => (
     <Point point={point}/>
 ));
 
